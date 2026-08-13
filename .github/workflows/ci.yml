@@ -29,7 +29,13 @@ jobs:
       - name: Instalar dependências
         run: poetry install --with dev
 
-      - name: Rodar lint e formatação
+      - name: Executar hooks do pre-commit
+        run: poetry run pre-commit run --all-files
+
+      - name: Aplicar formatação automática
+        run: poetry run task format
+
+      - name: Rodar lint
         run: poetry run task lint
 
       - name: Rodar testes
