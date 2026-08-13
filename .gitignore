@@ -50,6 +50,7 @@ dist/
 build/
 *.egg-info/
 .eggs/
+poetry.lock
 
 # --- OS ---
 Thumbs.db
