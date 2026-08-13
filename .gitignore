@@ -1,0 +1,59 @@
+# --- Python / virtual env ---
+.venv/
+venv/
+env/
+ENV/
+*.py[cod]
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pdm-build/
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Database / local data ---
+*.sqlite3
+*.db
+*.db-journal
+*.log
+
+# --- Project generated files ---
+data/
+raw/
+!data/.gitkeep
+!raw/.gitkeep
+
+# --- Coverage / tests ---
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+coverage.xml
+
+# --- Jupyter / notebooks metadata ---
+.ipynb_checkpoints/
+
+# --- Build / packaging ---
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# --- OS ---
+Thumbs.db
+
+# --- Local runtime files ---
+*.pid
+*.tmp
