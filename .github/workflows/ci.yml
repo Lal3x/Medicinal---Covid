@@ -40,3 +40,21 @@ jobs:
 
       - name: Rodar testes
         run: poetry run task tests
+
+  docker:
+    name: Validar e construir Docker
+    runs-on: ubuntu-latest
+    needs: quality
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Criar configuração local
+        run: cp .env.example .env
+
+      - name: Validar Docker Compose
+        run: docker compose config --quiet
+
+      - name: Construir imagens
+        run: docker compose build airflow-api-server streamlit

@@ -141,8 +141,7 @@ testes. Ela também é validada e publicada pelo workflow
 
 ## Automação no GitHub
 
-- `ci.yml`: mantém as verificações de qualidade e testes do projeto;
-- `docker.yml`: valida o Compose e constrói as imagens em alterações relevantes;
+- `ci.yml`: executa qualidade e testes e, se passarem, valida e constrói o Docker;
 - `codeql.yml`: executa SAST para Python em pushes, pull requests e semanalmente;
 - `docs.yml`: publica o MkDocs pelas Actions oficiais do GitHub Pages;
 - `dependabot.yml`: verifica semanalmente Actions, Python e Docker.

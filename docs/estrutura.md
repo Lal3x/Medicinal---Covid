@@ -12,9 +12,8 @@ medicinal/
 ├── .github/
 │   ├── dependabot.yml      # atualizações automáticas de dependências
 │   └── workflows/
-│       ├── ci.yml          # qualidade e testes
+│       ├── ci.yml          # qualidade, testes e build Docker
 │       ├── codeql.yml      # análise estática de segurança
-│       ├── docker.yml      # validação e build das imagens
 │       └── docs.yml        # publicação no GitHub Pages
 ├── README.md               # resumo rápido do projeto
 ├── docker-compose.yml      # serviços locais integrados

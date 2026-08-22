@@ -46,8 +46,9 @@ pois atualmente não utiliza Codecov, SonarCloud ou outro consumidor desse forma
 O workflow `.github/workflows/ci.yml` usa Python 3.13, instala as dependências,
 executa pre-commit, formatação, lint e a suíte com cobertura.
 
-O workflow `docker.yml` valida o Compose e constrói as imagens do Airflow e do
-Streamlit sem alterar o CI existente.
+Após a aprovação do job de qualidade, o job Docker do mesmo `ci.yml` valida o
+Compose e constrói as imagens do Airflow e do Streamlit. A dependência entre os
+jobs impede o build das imagens quando os testes ou verificações anteriores falham.
 
 ## Segurança automatizada
 
