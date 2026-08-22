@@ -2,8 +2,8 @@ site_name: Medicinal
 site_description: Documentação do projeto de simulação de pipeline de dados com SQL e Python
 site_author: Lucas Alexandre
 site_url: null
-repo_url: https://github.com/your-user/medicinal
-repo_name: medicinal
+repo_url: https://github.com/Lal3x/Medicinal---Covid
+repo_name: Lal3x/Medicinal---Covid
 
 nav:
   - Início: index.md
@@ -11,6 +11,7 @@ nav:
   - Estrutura do Projeto: estrutura.md
   - Instalação e Execução: instalacao.md
   - Pipeline: pipeline.md
+  - Testes e Cobertura: testes.md
 
 theme:
   name: material

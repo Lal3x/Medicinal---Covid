@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from sqlalchemy.engine import URL
 
 load_dotenv()
 
@@ -22,8 +23,27 @@ def get_env_var(
     return valor
 
 
+def get_database_url() -> str:
+    """Retorna a URL informada ou a monta com as configurações do Postgres."""
+    database_url = get_env_var("DATABASE_URL", obrigatoria=False)
+
+    if database_url:
+        return database_url
+
+    url = URL.create(
+        drivername="postgresql+psycopg2",
+        username=get_env_var("APP_DB_USER", obrigatoria=False, default="medicinal"),
+        password=get_env_var("APP_DB_PASSWORD", obrigatoria=False, default="medicinal"),
+        host=get_env_var("APP_DB_HOST", obrigatoria=False, default="localhost"),
+        port=int(get_env_var("APP_DB_PORT", obrigatoria=False, default="5432")),
+        database=get_env_var("APP_DB_NAME", obrigatoria=False, default="medicinal"),
+    )
+
+    return url.render_as_string(hide_password=False)
+
+
 # Banco de dados
-DATABASE_URL: str = get_env_var("DATABASE_URL")
+DATABASE_URL: str = get_database_url()
 
 # Ambiente da aplicação (dev, staging, prod)
 APP_ENV: str = get_env_var("APP_ENV", obrigatoria=False, default="dev")

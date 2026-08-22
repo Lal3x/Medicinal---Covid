@@ -17,7 +17,7 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.14'
+          python-version: '3.13'
 
       - name: Instalar Poetry
         uses: snok/install-poetry@v1
@@ -40,3 +40,21 @@ jobs:
 
       - name: Rodar testes
         run: poetry run task tests
+
+  docker:
+    name: Validar e construir Docker
+    runs-on: ubuntu-latest
+    needs: quality
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Criar configuração local
+        run: cp .env.example .env
+
+      - name: Validar Docker Compose
+        run: docker compose config --quiet
+
+      - name: Construir imagens
+        run: docker compose build airflow-api-server streamlit

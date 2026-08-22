@@ -1,20 +1,26 @@
-# Simulação de Pipeline de Dados com SQL e Python (COVID-19)
+# Medicinal Analytics
 
-Este projeto demonstra um pipeline de dados simples construído com Python e SQL, usando dados sintéticos de pacientes gerados pelo Synthea e relacionados à COVID-19.
+Este projeto demonstra um pipeline de dados clínicos sintéticos construído com
+Python, Airflow, PostgreSQL e Streamlit. O processamento segue a arquitetura
+Bronze, Silver e Gold e produz indicadores executivos de pacientes e atendimentos.
 
 ## Objetivo
 
 O objetivo do projeto é mostrar, de forma didática, como:
 
-- baixar e organizar arquivos em formato CSV;
+- organizar arquivos em formato CSV;
 - carregar dados em um banco relacional;
 - transformar esses dados em camadas de processamento;
 - aplicar consultas analíticas para obter insights;
-- simular uma arquitetura de dados em bronze, silver e gold.
+- aplicar uma arquitetura de dados em Bronze, Silver e Gold;
+- orquestrar e observar cada etapa pelo Airflow;
+- apresentar os resultados em um painel Streamlit.
 
 ## Contexto
 
-A ideia central é representar um fluxo realista de dados clínicos em um ambiente de dados moderno, sem depender de ferramentas pesadas de engenharia de dados. O projeto usa uma abordagem simples e educacional, focada em estrutura, organização e lógica de processamento.
+A ideia central é representar um fluxo realista e reproduzível em um ambiente
+local conteinerizado. Os dados são sintéticos e o projeto tem finalidade
+educacional, sem uso para decisões médicas.
 
 ## Tecnologias utilizadas
 
@@ -26,6 +32,9 @@ A ideia central é representar um fluxo realista de dados clínicos em um ambien
 - pytest e pytest-cov: testes automatizados e cobertura.
 - Black, Ruff e Taskipy: padronização, linting e automação de tarefas.
 - MkDocs Material: documentação do projeto.
+- Apache Airflow: orquestração e observabilidade das tarefas.
+- Streamlit e Plotly: painel executivo dos indicadores.
+- Docker Compose: execução integrada dos serviços e bancos PostgreSQL.
 
 ## Arquitetura em camadas
 
@@ -33,7 +42,7 @@ O fluxo de processamento do projeto segue o modelo medalhão:
 
 1. Bronze: dados brutos e originados em CSV.
 2. Silver: dados limpos, normalizados e validados.
-3. Gold: agregações e tabelas analíticas prontos para consumo.
+3. Gold: agregações e tabelas analíticas prontas para consumo.
 
 Esse padrão ajuda a separar dados crus de dados prontos para análise e facilita a manutenção e auditoria do pipeline.
 
@@ -48,5 +57,5 @@ Esse padrão ajuda a separar dados crus de dados prontos para análise e facilit
 
 - expandir o volume de dados e cenários;
 - adicionar mais consultas SQL analíticas;
-- incluir automações de orquestração do pipeline;
-- criar dashboards de exploração dos resultados.
+- ampliar a cobertura dos módulos de integração com PostgreSQL;
+- incluir monitoramento e alertas para falhas da DAG.
