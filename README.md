@@ -142,12 +142,12 @@ testes. Ela também é validada e publicada pelo workflow
 ## Automação no GitHub
 
 - `ci.yml`: executa qualidade e testes e, se passarem, valida e constrói o Docker;
-- `codeql.yml`: executa SAST para Python em pushes, pull requests e semanalmente;
 - `docs.yml`: publica o MkDocs pelas Actions oficiais do GitHub Pages;
 - `dependabot.yml`: verifica semanalmente Actions, Python e Docker.
 
-O DAST não faz parte do fluxo atual. Ele pode ser incluído futuramente contra o
-Streamlit quando houver um ambiente de teste estável.
+SAST com CodeQL e DAST não fazem parte do fluxo atual. O CodeQL pode ser habilitado
+se o repositório se tornar público ou passar a utilizar GitHub Code Security. O
+DAST pode ser incluído futuramente quando houver um ambiente de teste estável.
 
 ## Segurança
 

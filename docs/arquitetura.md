@@ -93,7 +93,7 @@ e não precisa de uma DAG própria.
 
 ## Qualidade e segurança
 
-O GitHub Actions executa testes, lint, validação das imagens e análise SAST com
-CodeQL. O Dependabot acompanha atualizações de Python, Docker e das próprias
-Actions. O DAST foi deixado como evolução futura para evitar subir todo o ambiente
-de aplicação em cada pull request.
+O GitHub Actions executa testes, lint e validação das imagens. O Dependabot
+acompanha atualizações de Python, Docker e das próprias Actions. SAST com CodeQL
+pode ser habilitado futuramente se o repositório se tornar público ou passar a
+utilizar GitHub Code Security. O DAST também permanece como evolução futura.

@@ -13,7 +13,6 @@ medicinal/
 │   ├── dependabot.yml      # atualizações automáticas de dependências
 │   └── workflows/
 │       ├── ci.yml          # qualidade, testes e build Docker
-│       ├── codeql.yml      # análise estática de segurança
 │       └── docs.yml        # publicação no GitHub Pages
 ├── README.md               # resumo rápido do projeto
 ├── docker-compose.yml      # serviços locais integrados
@@ -105,5 +104,5 @@ extensões. O funcionamento atual não depende de arquivos dentro delas.
 
 ### `.github`
 
-Centraliza integração contínua, análise estática de segurança, validação Docker,
-publicação da documentação e atualização automática de dependências.
+Centraliza integração contínua, validação Docker, publicação da documentação e
+atualização automática de dependências.

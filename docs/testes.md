@@ -50,11 +50,9 @@ Após a aprovação do job de qualidade, o job Docker do mesmo `ci.yml` valida o
 Compose e constrói as imagens do Airflow e do Streamlit. A dependência entre os
 jobs impede o build das imagens quando os testes ou verificações anteriores falham.
 
-## Segurança automatizada
-
-O workflow `codeql.yml` executa análise estática de segurança em Python nos
-pushes, pull requests e semanalmente. Os resultados ficam na área **Security** do
-repositório.
+## Dependências e segurança
 
 O Dependabot verifica semanalmente atualizações para GitHub Actions, dependências
-Python e imagens Docker. DAST não está habilitado no estágio atual do projeto.
+Python e imagens Docker. SAST com CodeQL não está habilitado porque o repositório
+privado atual não possui GitHub Code Security. SAST e DAST permanecem como
+evoluções futuras.
