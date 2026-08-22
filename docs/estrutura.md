@@ -5,16 +5,34 @@ A estrutura do repositório foi organizada para separar responsabilidades e faci
 ```text
 medicinal/
 ├── .env                    # variáveis de ambiente locais
+├── .env.example            # modelo seguro de configuração
+├── .dockerignore           # exclusões do contexto das imagens
 ├── .gitignore              # proteção de arquivos sensíveis e locais
 ├── .python-version         # versão do Python do projeto
+├── .github/
+│   ├── dependabot.yml      # atualizações automáticas de dependências
+│   └── workflows/
+│       ├── ci.yml          # qualidade e testes
+│       ├── codeql.yml      # análise estática de segurança
+│       ├── docker.yml      # validação e build das imagens
+│       └── docs.yml        # publicação no GitHub Pages
 ├── README.md               # resumo rápido do projeto
+├── docker-compose.yml      # serviços locais integrados
+├── Dockerfile.airflow      # imagem do Airflow com dependências do projeto
+├── Dockerfile.streamlit    # imagem do painel executivo
+├── app/
+│   └── streamlit_app.py    # interface de indicadores
+├── dags/
+│   └── medicinal_pipeline.py # orquestração no Airflow
 ├── mkdocs.yml              # configuração do MkDocs Material
-├── poetry.lock             # lock do Poetry
 ├── pyproject.toml          # dependências e configuração do projeto
+├── config/airflow/         # configurações avançadas opcionais
+├── plugins/                # extensões opcionais do Airflow
+├── data/raw/               # CSVs locais não versionados
+├── logs/airflow/           # logs locais não versionados
 ├── notebooks/              # notebooks de análise e validação
 ├── sql/
-│   ├── ddl/                # scripts SQL de criação de schemas e tabelas
-│   └── queries/            # consultas analíticas e SQL utilitário
+│   └── ddl/                # script SQL de criação dos schemas
 ├── src/
 │   └── medicinal/
 │       ├── __init__.py
@@ -40,13 +58,20 @@ medicinal/
 │   └── unit/
 │       ├── conftest.py
 │       ├── test_bronze_readers.py
+│       ├── test_database_utils.py
+│       ├── test_gold_aggregations.py
+│       ├── test_layer_loaders.py
+│       ├── test_main.py
+│       ├── test_reset_db.py
+│       ├── test_settings.py
 │       └── test_silver_transformations.py
 └── docs/
     ├── index.md
     ├── arquitetura.md
     ├── estrutura.md
     ├── instalacao.md
-    └── pipeline.md
+    ├── pipeline.md
+    └── testes.md
 ```
 
 ## Padrão de organização
@@ -63,12 +88,23 @@ Contém os módulos da aplicação, separados por camada funcional:
 
 ### `sql`
 
-Arquivos SQL para criação de objetos no banco e consultas reutilizáveis.
+Script SQL usado para criar os schemas Bronze, Silver e Gold.
 
 ### `tests`
 
-Testes automatizados para garantir a lógica de transformação e leitura dos dados.
+Testes automatizados de leitura, configuração, utilitários, orquestração,
+transformações e agregações.
 
 ### `docs`
 
 Documentação técnica e conceitual do projeto com MkDocs Material.
+
+### `config/airflow` e `plugins`
+
+Pastas opcionais montadas no Airflow para futuras configurações avançadas e
+extensões. O funcionamento atual não depende de arquivos dentro delas.
+
+### `.github`
+
+Centraliza integração contínua, análise estática de segurança, validação Docker,
+publicação da documentação e atualização automática de dependências.

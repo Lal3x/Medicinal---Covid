@@ -6,13 +6,15 @@ authors = [
     {name = "Lucas Alexandre",email = "lucas.alexandre10061@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.14,<4.0"
+requires-python = ">=3.13,<3.14"
 dependencies = [
     "sqlalchemy (>=2.0.52,<3.0.0)",
     "psycopg2-binary (>=2.9.12,<3.0.0)",
     "python-dotenv (>=1.2.2,<2.0.0)",
     "pandas (>=3.0.5,<4.0.0)",
-    "mkdocs-material (>=9.7.7,<10.0.0)"
+    "mkdocs-material (>=9.7.7,<10.0.0)",
+    "streamlit (>=1.61.1,<2.0.0)",
+    "plotly (>=6.9.0,<7.0.0)"
 ]
 
 [tool.poetry]
@@ -27,6 +29,7 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
+    "apache-airflow-task-sdk (==1.1.7)",
     "pytest (>=9.1.1,<10.0.0)",
     "black (>=26.5.1,<27.0.0)",
     "ruff (>=0.16.2,<0.17.0)",
@@ -39,7 +42,7 @@ dev = [
 [tool.taskipy.tasks]
 lint = "ruff check --select I . && ruff format --check . && black --check ."
 format = "ruff format . && ruff check --select I --fix . && black ."
-tests = "pytest ./tests/ -v && pytest --cov=src/medicinal"
+tests = "pytest tests -v --cov=medicinal --cov-report=term-missing --cov-fail-under=70"
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "src/medicinal"]

@@ -1,0 +1,46 @@
+name: Docker
+
+on:
+  push:
+    branches: [main, master, dev]
+    paths:
+      - Dockerfile.airflow
+      - Dockerfile.streamlit
+      - docker-compose.yml
+      - .dockerignore
+      - pyproject.toml
+      - src/**
+      - app/**
+      - .github/workflows/docker.yml
+  pull_request:
+    branches: [main, master, dev]
+    paths:
+      - Dockerfile.airflow
+      - Dockerfile.streamlit
+      - docker-compose.yml
+      - .dockerignore
+      - pyproject.toml
+      - src/**
+      - app/**
+      - .github/workflows/docker.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v6
+
+      - name: Criar configuração local
+        run: cp .env.example .env
+
+      - name: Validar Docker Compose
+        run: docker compose config --quiet
+
+      - name: Construir imagens
+        run: docker compose build airflow-api-server streamlit
