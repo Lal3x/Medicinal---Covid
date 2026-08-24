@@ -63,7 +63,7 @@ id -u
 Isso evita que os logs locais sejam criados com outro proprietário.
 
 Os arquivos `patients.csv`, `encounters.csv` e `conditions.csv` devem estar em
-`data/raw/`.
+`data/raw/`. Esses dados podem ser baixados no site a seguir: https://synthea.mitre.org/
 
 ## Subindo o ambiente completo
 
